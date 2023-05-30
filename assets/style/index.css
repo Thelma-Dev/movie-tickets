@@ -145,23 +145,28 @@ button:hover {
 
 .storage-display{
     margin-top: 3rem;
-    border: 1px solid #fff;
+    border: none;
     height: auto;
     padding: 10px;
     display: grid;
     place-items: center;
     gap: 10px;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 
 .movies {
     width: 200px;
-    height: 250px;
+    height: 330px;
     margin: 10px auto;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--app-dark-bg);
     border-radius: var(--app-border-radius);
-    padding: 20px;
     color: var(--app-dark-bg);
+    transition: all 0.25s ease-in-out;
 }
+
+.movies:hover{
+    transform: translateY(-10px);
+}
+
