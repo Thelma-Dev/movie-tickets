@@ -2,8 +2,9 @@
 
 import { select, print, getElement, onEvent } from './utils.js';
 
-import info from './cities.json' assert { type: "json" };
-import movieData from './movies.json' assert { type: "json" };
+
+import cityData from './cities.js';
+import movieData from './movies.js';
 
 
 const storage = select('.storage-display');
