@@ -144,9 +144,8 @@
     "length": 20,
     "info": {
       "project": "Movies API",
-      "description": "Simple API for students",
-      "version": "1.0.4",
-      "author": "Andre Specht",
-      "email": "andrespecht@outlook.com"
+      "description": "Simple API",
+      "author": "Thelma-Dev",
+      "copyright": "Andre Specht"
     }
   }

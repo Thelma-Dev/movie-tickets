@@ -133,17 +133,17 @@ input[type="text"] {
 
 input[type="text"].movie-input {
     background: transparent url(../img/search-icon.png) no-repeat 10px 10px;
-    background-size: 23px;
-    padding: 0 35px 0 38px;
+    background-size: 21px;
+    padding: 0 37px 0 38px;
 }
 
 
 
 input[type="text"].city-input {
-    width: 320px;
+    width: 330px;
     background: transparent url(../img/map-locator.png) no-repeat 10px 10px;
     background-size: 23px;
-    padding: 0 35px 0 38px;
+    padding: 0 37px 0 38px;
 }
 
 input:focus {
@@ -151,8 +151,8 @@ input:focus {
 }
 
 button {
-    width: 100px;
-    height: 46px;
+    width: 90px;
+    height: 43px;
     text-align: center;
     background-color: var(--app-purple);
     background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
@@ -167,6 +167,7 @@ button {
     cursor: pointer;
     position: absolute;
     right: 0;
+    top: 2px;
 }
 
 button:hover {
