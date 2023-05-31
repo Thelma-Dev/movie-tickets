@@ -5,16 +5,13 @@ import { select, print, getElement, onEvent } from './utils.js';
 import info from './cities.json' assert { type: "json" };
 import movieData from './movies.json' assert { type: "json" };
 
-print(movieData.movies);
-print(info.cities);
-
 
 const storage = select('.storage-display');
 const movieInput = select('.movie-input');
 const cityInput = select('.city-input');
 const body = select('body');
-const movieSearchResult = getElement('moviesearch-result');
-const citySearchResult = getElement('citysearch-result');
+const movieSearchResultBox = getElement('moviesearch-result');
+const citySearchResultBox = getElement('citysearch-result');
 const movieTitleArray = [];
 const cityArray = [];
 const movieUrl = './assets/script/movies.json';
@@ -50,6 +47,18 @@ async function getMovies() {
 getMovies();
 
 
+function printMovies(el) {
+    el.forEach(element => {
+        let movie = document.createElement('div');
+        movie.classList.add('movies');
+        movie.innerHTML = `<img src= "${element.img}" class="movie-img">` +
+                            `<p class="movie-title">
+                            ${element.title}</p>`;
+       storage.append(movie);
+    });
+}
+
+
 async function getCities() {
     try {
         const result = await fetch(cityUrl, options);
@@ -71,21 +80,8 @@ async function getCities() {
 getCities();
 
 
-
-function printMovies(el) {
-    el.forEach(element => {
-        let movie = document.createElement('div');
-        movie.classList.add('movies');
-        movie.innerHTML = `<img src= "${element.img}" max-width="100%" max-height="100%" border-radius="6px">` +
-                            `<p style="color:#fff;margin-top:3px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden">
-                            ${element.title}</p>`;
-       storage.append(movie);
-    });
-}
-
-
-// Adding an autocomplete feature in search
-// Create an array of all movie titles
+// Add autocomplete search feature
+// Get words to be searched into an array, filter the array based on matching keyword
 function getMovieTitles(el) {
     el.forEach(element => {
         movieTitleArray.push(element.title)
@@ -99,63 +95,121 @@ function getCityNames(el) {
 }
 
 
-function findMatches(keyword, movieTitleArray) {
+function findMovieKeywordMatch(keyword, movieTitleArray) {
+    let result = [];
+
+    if(keyword == '') {
+        return;
+    }
+
+
+    result = movieTitleArray.filter((movie) => {
+           return movie.toLowerCase().includes(keyword.toLowerCase());
+    })
+
+    displayMatchedMovies(result);
+   
+}
+
+
+function displayMatchedMovies(result){
     let movie = document.createElement('div');
 
-    if(keyword == '') {
-        return;
-    }
+    if(result.length){
+        resetSearch(movieSearchResultBox);
 
-    for(let i = 0; i < movieTitleArray.length; i++) {
-
-        if(movieTitleArray[i].toLowerCase().includes(keyword.toLowerCase())) {
-
+        for(let i = 0; i < result.length; i++){
             movie = document.createElement('div');
-            movie.innerHTML = movieTitleArray[i];
-            movieSearchResult.append(movie);
-
+            movie.innerHTML = result[i];
+            movieSearchResultBox.append(movie);
+    
             closeMovieSearchResult(movie);
-        }        
-    }
-    
-}
-
-
-function findCityMatches(keyword, cityArray) {
-    let city = document.createElement('div');
-
-    if(keyword == '') {
-        return;
-    }
-
-    for(let i = 0; i < cityArray.length; i++) {
-
-        if(cityArray[i].toLowerCase().includes(keyword.toLowerCase())) {
-
-            city = document.createElement('div');
-            city.innerHTML = cityArray[i];
-            citySearchResult.append(city);
-
-            closeCitySearchResult(city);
-        }        
-    }
-    
-}
-
-function onNoMatches(keyword, movieTitleArray) {
-    
-    for(let i = 0; i < movieTitleArray.length; i++) {
-
-        if(!movieTitleArray[i].toLowerCase().includes(keyword.toLowerCase())) {
-            let movie = document.createElement('div');
-            movie.innerHTML = "Movie not found";
-            movieSearchResult.append(movie);
         }
     }
-    
+
+    if(!result.length) {
+        movieSearchResultBox.innerHTML = "No movie found";
+        movieSearchResultBox.style.padding = '10px';
+    }
 }
 
 
+function findCityKeywordMatch(keyword, cityArray) {
+    let result = [];
+
+    if(keyword == '') {
+        return;
+    }
+
+
+    result = cityArray.filter((city) => {
+        return city.toLowerCase().includes(keyword.toLowerCase());
+    })
+
+    displayMatchedCities(result);
+}
+
+
+function displayMatchedCities(result){
+    let city = document.createElement('div');
+
+    if(result.length){
+        resetSearch(citySearchResultBox);
+        for(let i = 0; i < result.length; i++){
+            city = document.createElement('div');
+            city.innerHTML = result[i];
+            citySearchResultBox.append(city);
+    
+            closeCitySearchResult(city);
+        }
+    }
+
+    if(!result.length) {
+        citySearchResultBox.innerHTML = "No cities found";
+        citySearchResultBox.style.padding = '10px';
+    }
+}
+
+
+// Event Listeners
+onEvent('input', movieInput, function() {
+
+    displaySearchResult(movieSearchResultBox);
+
+    let input = movieInput.value;
+
+    if(input.length > 1) {
+        findMovieKeywordMatch(input, movieTitleArray);  
+    }
+    else{
+        hideSearchResult(movieSearchResultBox);
+    }
+})
+
+onEvent('input', cityInput, function() {
+
+    displaySearchResult(citySearchResultBox);
+
+    let input = cityInput.value;
+
+    if(input.length > 1) {
+        findCityKeywordMatch(input, cityArray);
+    }
+    else{
+        hideSearchResult(citySearchResultBox);
+    }
+
+})
+
+onEvent('click', body, function() {
+    if(citySearchResultBox || movieSearchResultBox) {
+        hideSearchResult(citySearchResultBox);
+        hideSearchResult(movieSearchResultBox);
+    }
+})
+
+
+// Helper Functions
 function closeMovieSearchResult(movie) {
 
     onEvent('click', movie, () => {
@@ -166,8 +220,10 @@ function closeMovieSearchResult(movie) {
 
 
 function closeMovieSelection(movie) {
-    if (movieSearchResult)
-        movieSearchResult.remove(movie);
+    if (movieSearchResultBox){
+        movieSearchResultBox.remove(movie);
+    }
+        
 }
 
 
@@ -179,46 +235,22 @@ function closeCitySearchResult(city) {
 }
 
 function closeCitySelection(city) {
-    if (citySearchResult)
-        citySearchResult.remove(city);
+    if (citySearchResultBox)
+        citySearchResultBox.remove(city);
 }
 
-function displaySearchResult(searchResultBar) {
+function displaySearchResult(searchResultBox) {
 
-    searchResultBar.style.display = 'block';
+    searchResultBox.style.display = 'block';
 }
 
-function hideSearchResult(searchResultBar) {
+function hideSearchResult(searchResultBox) {
 
-    searchResultBar.style.display = 'none';
+    searchResultBox.style.display = 'none';
 }
 
-onEvent('keyup', movieInput, function() {
+function resetSearch(searchResultBox){
+    searchResultBox.innerHTML = '';
+    searchResultBox.style.padding = '0px';
+}
 
-    displaySearchResult(movieSearchResult);
-
-    let input = movieInput.value;
-
-    if(input.length > 1) {
-        findMatches(input, movieTitleArray);
-    }
-})
-
-onEvent('keyup', cityInput, function() {
-
-    displaySearchResult(citySearchResult);
-
-    let input = cityInput.value;
-
-    if(input.length > 1) {
-        findCityMatches(input, cityArray);
-    }
-})
-
-onEvent('click', body, function() {
-    if(citySearchResult || movieSearchResult) {
-        hideSearchResult(citySearchResult);
-        hideSearchResult(movieSearchResult);
-    }
-})
-    
