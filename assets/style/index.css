@@ -499,7 +499,7 @@ h3{
     
 }
 
-@media (max-width: 420px) {
+@media (max-width: 430px) {
 
     input[type="text"] {
         width: 342px;       
@@ -570,6 +570,7 @@ h3{
     }
 
     button {
+        width: 85px;
         right: 0;
     }
 
@@ -580,6 +581,40 @@ h3{
     #citysearch-result {
         width: 320px;
     }  
+
+}
+
+@media (max-width: 378px) {
+
+    input[type="text"] {
+        width: 290px;       
+    }
+    
+    input[type="text"].movie-input {
+        background-size: 20px;
+    }
+    
+    
+    input[type="text"].city-input {
+        width: 290px;
+        background-size: 20px;
+    }
+
+    button {
+        right: 0;
+    }
+
+    #moviesearch-result {
+        width: 290px;
+    }
+    
+    #citysearch-result {
+        width: 290px;
+    }     
+    
+    .movies {
+        width: 140px;
+    }
 
 }
 
