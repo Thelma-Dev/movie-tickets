@@ -318,7 +318,7 @@ h3{
     }
     
     #citysearch-result {
-        width: 300px;
+        width: 280px;
         height: auto;
     }  
 }
@@ -553,6 +553,44 @@ h3{
 
 }
 
+
+@media (width: 428px) {
+
+    input[type="text"] {
+        width: 355px;       
+    }
+    
+    input[type="text"].movie-input {
+        background-size: 22px;
+    }
+    
+    
+    input[type="text"].city-input {
+        width: 355px;
+    }
+
+    button {
+        right: 3px;
+    }
+
+    #moviesearch-result {
+        width: 355px;
+        height: auto;
+        padding: 0px;
+        left:0;
+        top: 45%;
+    }
+    
+    #citysearch-result {
+        width: 354px;
+        height: auto;
+        padding: 0px;
+        right:3px;
+        top: 100%;
+    }  
+
+}
+
 @media (max-width: 393px) {
 
     input[type="text"] {
@@ -610,6 +648,41 @@ h3{
     
     #citysearch-result {
         width: 290px;
+    }     
+    
+    .movies {
+        width: 140px;
+    }
+
+}
+
+@media (width: 375px) {
+
+    input[type="text"] {
+        width: 300px;       
+    }
+    
+    input[type="text"].movie-input {
+        background-size: 20px;
+    }
+    
+    
+    input[type="text"].city-input {
+        width: 300px;
+        background-size: 20px;
+    }
+
+    button {
+        right: 5px;
+    }
+
+    #moviesearch-result {
+        width: 300px;
+    }
+    
+    #citysearch-result {
+        width: 300px;
+        right:3px;
     }     
     
     .movies {
