@@ -29,10 +29,16 @@
             <section>
                 <div class="container">
                    
-                    <form>
-                        <input type="text" class="input" placeholder="Enter movie name">
-                        <input type="text" class="city-input" placeholder="City">
-                        <button class="btn">Search</button>
+                    <form autocomplete="off">
+                        <div class="search-input">
+                            <input type="text" class="movie-input" placeholder="Search movies..">
+                            <input type="text" class="city-input" placeholder="City">
+                            <button class="btn">Search</button>
+
+                            <div id="moviesearch-result"></div>
+                            <div id="citysearch-result"></div>
+                        </div>
+                        
                     </form>
                     
                     <div class="storage-display">

@@ -70,10 +70,11 @@ nav ul li a {
     text-decoration: none;
     letter-spacing: 0.2px;
     cursor: pointer;
+    transition: all 0.25s ease-in-out;
 }
   
 nav ul li a:hover {
-    text-decoration: underline;
+    color: var(--app-blue-hover);
 }
   
   
@@ -83,7 +84,7 @@ nav ul li + li {
 
 
 /* -------------------------------- */
-/* Seach Area                       */
+/* Section                          */
 /* -------------------------------- */
 section{
     margin-top: 3rem;
@@ -92,6 +93,11 @@ section{
     padding: 10px;
 }
 
+
+/* -------------------------------- */
+/* Seach Area                       */
+/* -------------------------------- */
+
 form {
     width: 100%;
     height: 70px;
@@ -99,10 +105,20 @@ form {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    border: 1px solid #1937fc;
+}
+
+.search-input {
+    position: relative;
+    border: 1px solid #fff;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 input[type="text"] {
-    width: 600px;
+    width: 700px;
     height: 48px;
     padding: 0 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -115,12 +131,23 @@ input[type="text"] {
     text-align: left;
 }
 
+input[type="text"].movie-input {
+    background: transparent url(../img/search-icon.png) no-repeat 10px 10px;
+    background-size: 23px;
+    padding: 0 35px 0 38px;
+}
+
+
+
 input[type="text"].city-input {
-    width: 350px;
+    width: 320px;
+    background: transparent url(../img/map-locator.png) no-repeat 10px 10px;
+    background-size: 23px;
+    padding: 0 35px 0 38px;
 }
 
 input:focus {
-    border: 1px solid rgba(255, 255, 255, .3);
+    border: 1px solid rgba(255, 255, 255, 0.302);
 }
 
 button {
@@ -137,11 +164,64 @@ button {
     transition: all 0.25s ease-in-out;
     color: #fff;
     cursor: pointer;
+    position: absolute;
+    right: 0;
 }
 
 button:hover {
     background-color: var(--app-blue-hover);
 }
+
+
+#moviesearch-result {
+    display: none;
+    position: absolute;
+    left:0;
+    top: 100%;
+    background-color: #fff;
+    width: 350px;
+    height: auto;
+    padding: 0px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 9999;
+    transition: all 0.25s ease-in-out;
+    text-align: left;
+    border-radius: 4px;
+}
+
+#citysearch-result {
+    display: none;
+    position: absolute;
+    right:0;
+    top: 100%;
+    background-color: #fff;
+    width: 320px;
+    height: auto;
+    padding: 0px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 9999;
+    transition: all 0.25s ease-in-out;
+    text-align: left;
+    border-radius: 4px;
+
+}
+
+#moviesearch-result div, #citysearch-result div {
+    padding: 10px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+#moviesearch-result div:hover, #citysearch-result div:hover {
+    background-color: var(--app-blue-hover);
+    color: #fff;
+}
+
+
+
+/* -------------------------------- */
+/* Movie Display                    */
+/* -------------------------------- */
 
 .storage-display{
     margin-top: 3rem;
@@ -169,4 +249,3 @@ button:hover {
 .movies:hover{
     transform: translateY(-10px);
 }
-
