@@ -115,10 +115,10 @@ function findMovieKeywordMatch(keyword, movieTitleArray) {
 function displayMatchedMovies(result){
     let movie = document.createElement('div');
 
-    if(result.length){
+    if(result.length) {
         resetSearch(movieSearchResultBox);
 
-        for(let i = 0; i < result.length; i++){
+        for(let i = 0; i < result.length; i++) {
             movie = document.createElement('div');
             movie.innerHTML = result[i];
             movieSearchResultBox.append(movie);
@@ -150,10 +150,10 @@ function findCityKeywordMatch(keyword, cityArray) {
 }
 
 
-function displayMatchedCities(result){
+function displayMatchedCities(result) {
     let city = document.createElement('div');
 
-    if(result.length){
+    if(result.length) {
         resetSearch(citySearchResultBox);
         for(let i = 0; i < result.length; i++){
             city = document.createElement('div');
@@ -174,37 +174,35 @@ function displayMatchedCities(result){
 // Event Listeners
 onEvent('input', movieInput, function() {
 
-    displaySearchResult(movieSearchResultBox);
-
+    displaySearchResultBox(movieSearchResultBox);
     let input = movieInput.value;
 
     if(input.length > 1) {
         findMovieKeywordMatch(input, movieTitleArray);  
     }
     else{
-        hideSearchResult(movieSearchResultBox);
+        hideSearchResultBox(movieSearchResultBox);
     }
 })
 
 onEvent('input', cityInput, function() {
 
-    displaySearchResult(citySearchResultBox);
-
+    displaySearchResultBox(citySearchResultBox);
     let input = cityInput.value;
 
     if(input.length > 1) {
         findCityKeywordMatch(input, cityArray);
     }
     else{
-        hideSearchResult(citySearchResultBox);
+        hideSearchResultBox(citySearchResultBox);
     }
 
 })
 
 onEvent('click', body, function() {
     if(citySearchResultBox || movieSearchResultBox) {
-        hideSearchResult(citySearchResultBox);
-        hideSearchResult(movieSearchResultBox);
+        hideSearchResultBox(citySearchResultBox);
+        hideSearchResultBox(movieSearchResultBox);
     }
 })
 
@@ -239,12 +237,12 @@ function closeCitySelection(city) {
         citySearchResultBox.remove(city);
 }
 
-function displaySearchResult(searchResultBox) {
+function displaySearchResultBox(searchResultBox) {
 
     searchResultBox.style.display = 'block';
 }
 
-function hideSearchResult(searchResultBox) {
+function hideSearchResultBox(searchResultBox) {
 
     searchResultBox.style.display = 'none';
 }
