@@ -212,7 +212,7 @@ function closeMovieSearchResult(movie) {
 
     onEvent('click', movie, () => {
         closeMovieSelection(movie);
-        movieInput.value = '';
+        movieInput.value = movie.innerHTML;
     })
 }
 
@@ -228,7 +228,7 @@ function closeMovieSelection(movie) {
 function closeCitySearchResult(city) {
     onEvent('click', city, () => {
         closeCitySelection(city);
-        cityInput.value = '';
+        cityInput.value = city.innerHTML;
     })
 }
 

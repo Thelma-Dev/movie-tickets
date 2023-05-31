@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, intial scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" >
         <title>Movie Tickets</title>
         <link rel="shortcut icon" href="assets/img/favicon.png?v=2" type="image/x-icon">
@@ -15,7 +16,7 @@
         <main>
             <header>
                 <div class="container flexbox">
-                    <div class="title"><h1>Tickets</h1></div>
+                    <div class="title"><h1><i class="fa-solid fa-ticket"></i> Tickets</h1></div>
                     <nav>
                         <ul>
                             <li><a href="#">Movies</a></li>
@@ -24,6 +25,12 @@
                             <li><a href="#">My Account</a></li>
                         </ul>
                     </nav>
+                    <div class="hamburger-menu">
+                        <input id="menu-toggle" type="checkbox" />
+                        <label class="menu-btn" for="menu-toggle">
+                          <span></span>
+                        </label>
+                    </div>
                 </div>
             </header>
             <section>

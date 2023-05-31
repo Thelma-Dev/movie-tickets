@@ -36,7 +36,7 @@ header {
   
 .title {
     width: 40%;
-    height: 36px;
+    height: 50px;
 }
   
 .title h1 {
@@ -46,11 +46,17 @@ header {
     line-height: 56px;
     text-transform: uppercase;
     letter-spacing: 0.3px;
+    margin-left: 10px;
+}
+
+.fa-ticket {
+    color: #a4508b;
 }
   
 nav {
     width: 60%;
     text-align: right;
+    height: 50px;
 }
   
 nav ul {
@@ -80,6 +86,10 @@ nav ul li a:hover {
   
 nav ul li + li {
     margin-left: 20px;
+}
+
+.hamburger-menu {
+    display: none;
 }
 
 
@@ -152,7 +162,7 @@ input:focus {
 
 button {
     width: 90px;
-    height: 43px;
+    height: 46px;
     text-align: center;
     background-color: var(--app-purple);
     background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
@@ -167,7 +177,6 @@ button {
     cursor: pointer;
     position: absolute;
     right: 0;
-    top: 2px;
 }
 
 button:hover {
@@ -198,7 +207,7 @@ button:hover {
     right:0;
     top: 100%;
     background-color: #f0f2f4;
-    width: 320px;
+    width: 330px;
     height: auto;
     padding: 0px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -277,3 +286,300 @@ h3{
     overflow:hidden;
     font-size: 15px;
 }
+
+
+
+/* -------------------------------- */
+/* Media Queries                    */
+/* -------------------------------- */
+
+@media (max-width: 980px) {
+
+    input[type="text"] {
+        width: 500px;       
+    }
+    
+    input[type="text"].movie-input {
+        background-size: 22px;
+        padding: 0 37px 0 38px;
+    }
+    
+    
+    input[type="text"].city-input {
+        width: 300px;
+        background-size: 23px;
+        padding: 0 37px 0 38px;
+    }
+
+    #moviesearch-result {
+        width: 350px;
+        height: auto;
+
+    }
+    
+    #citysearch-result {
+        width: 300px;
+        height: auto;
+    }  
+}
+
+@media (max-width: 800px) {
+    
+    .hamburger-menu {
+        display: block;
+    }
+
+    nav ul li, .contact {
+        display: none;
+    }
+
+    #menu-toggle {
+        opacity: 0;
+    }
+
+    #menu-toggle:checked + .menu-btn > span {
+        transform: rotate(45deg);
+    }
+
+    #menu-toggle:checked + .menu-btn > span::before {
+        top: 0;
+        transform: rotate(0deg);
+    }
+
+    #menu-toggle:checked + .menu-btn > span::after {
+        top: 0;
+        transform: rotate(90deg);
+    }
+
+    #menu-toggle:checked ~ .menu-box {
+        left: 54.5% !important;
+    }
+
+    .menu-btn {
+        position: absolute;
+        top: 38px;
+        left: 89%;
+        width: 24px;
+        height: 20px;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    .menu-btn > span,
+    .menu-btn > span::before,
+    .menu-btn > span::after {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #f0f2f4;
+        transition-duration: .25s;
+    }
+
+    .menu-btn > span::before {
+        content: '';
+        top: -8px;
+    }
+
+    .menu-btn > span::after {
+        content: '';
+        top: 8px;
+    }
+
+
+    input[type="text"] {
+        width: 420px;       
+    }
+    
+    
+    input[type="text"].city-input {
+        width: 270px;
+        background-size: 23px;
+        padding: 0 37px 0 38px;
+    }
+
+    #moviesearch-result {
+        width: 350px;
+        height: auto;
+        padding: 0px;
+        left:0;
+        top: 100%;
+    }
+    
+    #citysearch-result {
+        width: 270px;
+        height: auto;
+        padding: 0px;
+        right:0;
+        top: 100%;
+    }  
+}
+
+@media (max-width: 690px) {
+    input[type="text"] {
+        width: 340px;       
+    }
+    
+    
+    input[type="text"].city-input {
+        width: 250px;
+        background-size: 23px;
+        padding: 0 37px 0 38px;
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    form {
+        width: 100%;
+        height: 100%;
+    }
+
+    .search-input {
+        position: relative;
+        border: none;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        justify-content: space-between;
+    }
+    
+    input[type="text"] {
+        width: 410px;
+        height: 47px;
+        padding: 0 15px;
+        font-size: 15px;
+        
+    }
+    
+    input[type="text"].movie-input {
+        background-size: 22px;
+        padding: 0 37px 0 38px;
+    }
+    
+    
+    input[type="text"].city-input {
+        width: 410px;
+        background-size: 22px;
+        padding: 0 37px 0 38px;
+    }
+
+    button {
+        width: 90px;
+        height: 46px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 500;
+        top: 55%;
+        right: 3px;
+    }
+
+    #moviesearch-result {
+        width: 410px;
+        height: auto;
+        left:0;
+        top: 45%;
+    }
+    
+    #citysearch-result {
+        width: 410px;
+        height: auto;
+        right:0;
+        top: 100%;
+    }  
+    
+    h3 {
+        padding: 5px 18px;
+        font-weight: 400;
+    }
+
+    
+    
+}
+
+@media (max-width: 420px) {
+
+    input[type="text"] {
+        width: 342px;       
+    }
+    
+    input[type="text"].movie-input {
+        background-size: 22px;
+    }
+    
+    
+    input[type="text"].city-input {
+        width: 342px;
+    }
+
+    button {
+        right: 0;
+    }
+
+    #moviesearch-result {
+        width: 342px;
+        height: auto;
+        padding: 0px;
+        left:0;
+        top: 45%;
+    }
+    
+    #citysearch-result {
+        width: 342px;
+        height: auto;
+        padding: 0px;
+        right:0;
+        top: 100%;
+    }  
+
+    .storage-display{
+        height: auto;
+        padding: 10px;
+        display: grid;
+        place-items: center;
+        gap: 5px;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    
+    
+    .movies {
+        width: 160px;
+        height: 330px;
+        margin: 10px auto;
+    }
+
+}
+
+@media (max-width: 393px) {
+
+    input[type="text"] {
+        width: 320px;       
+    }
+    
+    input[type="text"].movie-input {
+        background-size: 20px;
+    }
+    
+    
+    input[type="text"].city-input {
+        width: 320px;
+        background-size: 20px;
+    }
+
+    button {
+        right: 0;
+    }
+
+    #moviesearch-result {
+        width: 320px;
+    }
+    
+    #citysearch-result {
+        width: 320px;
+    }  
+
+}
+
