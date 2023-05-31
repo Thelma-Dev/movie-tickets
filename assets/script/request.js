@@ -124,7 +124,7 @@ function displayMatchedMovies(result){
             movie.innerHTML = result[i];
             movieSearchResultBox.append(movie);
     
-            closeMovieSearchResult(movie);
+            selectMovieFromSearchResult(movie);
         }
     }
 
@@ -161,7 +161,7 @@ function displayMatchedCities(result) {
             city.innerHTML = result[i];
             citySearchResultBox.append(city);
     
-            closeCitySearchResult(city);
+            selectCityFromSearchResult(city);
         }
     }
 
@@ -209,16 +209,16 @@ onEvent('click', body, function() {
 
 
 // Helper Functions
-function closeMovieSearchResult(movie) {
+function selectMovieFromSearchResult(movie) {
 
     onEvent('click', movie, () => {
-        closeMovieSelection(movie);
+        closeMovieSearchBox(movie);
         movieInput.value = movie.innerHTML;
     })
 }
 
 
-function closeMovieSelection(movie) {
+function closeMovieSearchBox(movie) {
     if (movieSearchResultBox){
         movieSearchResultBox.remove(movie);
     }
@@ -226,14 +226,14 @@ function closeMovieSelection(movie) {
 }
 
 
-function closeCitySearchResult(city) {
+function selectCityFromSearchResult(city) {
     onEvent('click', city, () => {
-        closeCitySelection(city);
+        closeCitySearchBox(city);
         cityInput.value = city.innerHTML;
     })
 }
 
-function closeCitySelection(city) {
+function closeCitySearchBox(city) {
     if (citySearchResultBox)
         citySearchResultBox.remove(city);
 }
@@ -248,7 +248,7 @@ function hideSearchResultBox(searchResultBox) {
     searchResultBox.style.display = 'none';
 }
 
-function resetSearch(searchResultBox){
+function resetSearch(searchResultBox) {
     searchResultBox.innerHTML = '';
     searchResultBox.style.padding = '0px';
 }
