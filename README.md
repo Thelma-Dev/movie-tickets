@@ -1,6 +1,6 @@
 ## Movie-Tickets
 
-A simple program that makes use of movies API. It also integrates autocomplete functionality when searching for a movie or a city. 
+A simple program that makes use of movie API. It also integrates autocomplete functionality when searching for a movie or a city. 
 
 Movies and cities are retrieved from two JSON files (movies.json and cities.json) using fetch API.
 
