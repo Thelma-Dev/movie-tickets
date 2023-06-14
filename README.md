@@ -9,4 +9,4 @@ For the purpose of this project, the "search button" acts as a decoratiing eleme
 
 ### Demo
 
-Click [here](https://thelma-dev.github.io/Movie-Tickets/) to view demo.
+Click [here](https://thelma-dev.github.io/movie-tickets/) to view demo.
